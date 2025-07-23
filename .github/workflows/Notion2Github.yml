@@ -1,0 +1,14 @@
+            - name: Notion2Github
+  # You may pin to the exact commit or the version.
+  # uses: narkdown/notion2github@8090143207848670f86430c3f29dc217782ed0c4
+  uses: narkdown/notion2github@v1.1.1
+  with:
+    # URL of the notion database to extract.
+    database-url: 
+    # Directory in which the notion pages to extract will be stored.
+    docs-directory: # optional, default is docs
+    # Property of the filter to apply to the notion database.
+    filter-prop: # optional, default is 
+    # Value of the filter to apply to the notion database.
+    filter-value: # optional, default is 
+          
