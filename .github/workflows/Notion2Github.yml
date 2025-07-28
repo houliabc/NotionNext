@@ -4,7 +4,7 @@
   uses: narkdown/notion2github@v1.1.1
   with:
     # URL of the notion database to extract.
-    database-url: 
+    database-url: 'https://www.notion.so/houliabc/239217b4bf1480939f0be4a0595ab056?v=239217b4bf1481e8bc42000cdcdc7130&source=copy_link'
     # Directory in which the notion pages to extract will be stored.
     docs-directory: # optional, default is docs
     # Property of the filter to apply to the notion database.
