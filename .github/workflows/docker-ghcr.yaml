@@ -1,63 +1,14 @@
-name: Docker ghcr.io
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-on:
-  push:
-    branches: [main]
-    # Publish semver tags as releases.
-    tags: ["v*.*.*"]
-  pull_request:
-    branches: [main]
-
-env:
-  # Use docker.io for Docker Hub if empty
-  REGISTRY: ghcr.io
-  # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      # Login against a Docker registry except on PR
-      # https://github.com/docker/login-action
-      - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      # Extract metadata (tags, labels) for Docker
-      # https://github.com/docker/metadata-action
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-      # Build and push Docker image with Buildx (don't push on PR)
-      # https://github.com/docker/build-push-action
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+            - name: Notion2Github
+  # You may pin to the exact commit or the version.
+  # uses: narkdown/notion2github@8090143207848670f86430c3f29dc217782ed0c4
+  uses: narkdown/notion2github@v1.1.1
+  with:
+    # URL of the notion database to extract.
+    database-url: 'https://www.notion.so/houliabc/239217b4bf1480939f0be4a0595ab056?v=239217b4bf1481e8bc42000cdcdc7130&source=copy_link'
+    # Directory in which the notion pages to extract will be stored.
+    docs-directory: # optional, default is docs
+    # Property of the filter to apply to the notion database.
+    filter-prop: # optional, default is 
+    # Value of the filter to apply to the notion database.
+    filter-value: # optional, default is 
+          
